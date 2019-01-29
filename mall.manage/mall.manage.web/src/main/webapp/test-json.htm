@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="http://manage.mall.com/js/jquery-easyui-1.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	alert($);//有弹框说明上面的js加载成功
+	$(function(){
+		$.ajax({
+			url : "http://manage.mall.com/json.jsp",
+			type : "get",
+			dataType : "json",
+			success : function(data){
+				alert(data.abc);
+			}
+		});
+	});
+</script>
+</head>
+<body>
+
+</body>
+</html>

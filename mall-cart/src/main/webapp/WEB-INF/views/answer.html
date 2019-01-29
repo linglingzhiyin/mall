@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"> 
+	<title>Answer</title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div id="myCarousel" class="carousel slide">
+	<!-- 轮播（Carousel）指标 -->
+	<ol class="carousel-indicators">
+		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		<li data-target="#myCarousel" data-slide-to="1"></li>
+		<li data-target="#myCarousel" data-slide-to="2"></li>
+	</ol>   
+
+	<!-- 轮播（Carousel）项目 -->
+	<div class="carousel-inner">
+		<div class="item active">
+		<img  text-align:center src="D:/Program Files/psb.webp" alt="First slide">
+		</div>
+		<div class="item">
+		<img src="D:/Program Files/psb.webp" alt="Second slide">
+		</div>
+		<div class="item">
+		<img src="D:/Program Files/psb.webp" alt="Third slide">
+		</div>
+	</div>
+	<!-- 轮播（Carousel）导航 -->
+	<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+	    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+	    <span class="sr-only">上一页</span>
+	</a>
+	<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+	    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+	    <span class="sr-only">下一页</span>
+	</a>
+</div>
+
+<!-- 控制按钮 -->
+
+<div style="text-align:center;">
+	<input type="button" class="btn prev-slide" value="上一页">
+	<input type="button" class="btn next-slide" value="下一页">
+	<input type="button" class="btn slide-one" value="1">
+	<input type="button" class="btn slide-two" value="2">
+	<input type="button" class="btn slide-three" value="3">
+</div>
+<script>
+	$(function(){
+		// 循环轮播到上一个项目
+		$(".prev-slide").click(function(){
+			$("#myCarousel").carousel('prev');
+		});
+		// 循环轮播到下一个项目
+		$(".next-slide").click(function(){
+			$("#myCarousel").carousel('next');
+		});
+		// 循环轮播到某个特定的帧 
+		$(".slide-one").click(function(){
+			$("#myCarousel").carousel(0);
+		});
+		$(".slide-two").click(function(){
+			$("#myCarousel").carousel(1);
+		});
+		$(".slide-three").click(function(){
+			$("#myCarousel").carousel(2);
+		});
+	});
+</script>
+</body>
+</html>

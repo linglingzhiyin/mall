@@ -1,0 +1,80 @@
+package com.mall.common.bean;
+
+import java.util.List;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+/**
+ * 自定义的返回结果
+ * @author Administrator
+ *
+ */
+public class EasyUIResult {
+    
+    // 定义jackson对象
+    private static final ObjectMapper MAPPER = new ObjectMapper();
+    
+    private Long total;
+    
+    private List<?> rows;
+
+    public Long getTotal() {
+        return total;
+    }
+
+    public void setTotal(Long total) {
+        this.total = total;
+    }
+
+    public List<?> getRows() {
+        return rows;
+    }
+
+    public void setRows(List<?> rows) {
+        this.rows = rows;
+    }
+
+    @Override
+    public String toString() {
+        return "EasyUIResult [total=" + total + ", rows=" + rows + "]";
+    }
+
+    public EasyUIResult(Long total, List<?> rows) {
+        super();
+        this.total = total;
+        this.rows = rows;
+    }
+    
+    public EasyUIResult(Integer total, List<?> rows) {
+        super();
+        this.total = Long.valueOf(total);
+        this.rows = rows;
+    }
+
+    public EasyUIResult() {
+        super();
+    }
+
+    /**
+     * Object是集合转化
+     * 
+     * @param jsonData json数据
+     * @param clazz 集合中的类型
+     * @return
+     */
+    public static EasyUIResult formatToList(String jsonData, Class<?> clazz) {
+        try {
+            JsonNode jsonNode = MAPPER.readTree(jsonData);
+            JsonNode data = jsonNode.get("rows");
+            List<?> list = null;
+            if (data.isArray() && data.size() > 0) {
+                list = MAPPER.readValue(data.traverse(),
+                        MAPPER.getTypeFactory().constructCollectionType(List.class, clazz));
+            }
+            return new EasyUIResult(jsonNode.get("total").intValue(), list);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+}

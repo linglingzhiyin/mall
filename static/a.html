@@ -1,0 +1,16 @@
+
+ahhhahhdahsd 
+    <button onclick="openFileIIs('F:\\taotao\\wzj\\taotao-static\\js\\login')">click</button>
+<script>
+            function openFileIIs(filename){       
+                    try{   
+                        var obj=new ActiveXObject("wscript.shell");   
+                        if(obj){   
+                            obj.Run("\""+filename+"\"", 1, false );  
+                            obj=null;   
+                        }   
+                    }catch(e){   
+                        alert(filename);   
+                    }   
+          }  
+</script>
